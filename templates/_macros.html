@@ -1,0 +1,26 @@
+{% macro render_header() %}
+{% set section = get_section(path="_index.md") %}
+<a href="{{ section.permalink }}">
+    <div class="logo white-text">
+        <!-- <img src="{{ get_url(path=config.extra.juice_logo_path) }}" alt="logo"> -->
+        {{ config.extra.juice_logo_name }}
+    </div>
+</a>
+
+<nav>
+    {% for page in section.pages %}
+    <a class="nav-item subtitle-text white-text" href="{{ page.permalink }}">{{ page.title }}</a>
+    {% endfor %}
+    {% if config.extra.juice_extra_menu %}
+        {% for menu in config.extra.juice_extra_menu %}
+        <a class="nav-item subtitle-text white-text" href="{{ menu.link }}" target="{% if menu.target %}{{ menu.target }}{% endif %}">{{ menu.title }}</a>
+        {% endfor %}
+    {% endif %}
+</nav>
+
+<style>
+.white-text {
+  color: #fff;
+}
+</style>
+{% endmacro render_header %}

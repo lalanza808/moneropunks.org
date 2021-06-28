@@ -1,0 +1,56 @@
+{% extends "juice/templates/index.html" %}
+
+{% block header %}
+<header class="box-shadow" style="">
+    {{ macros::render_header() }}
+</header>
+{% endblock header %}
+
+{% block content %}
+<div class="center">
+{% for page in section.pages %}
+  <div class="blog-preview">
+    <a href="{{ page.permalink }}">
+    <div class="preview-title">
+      <h1>{{ page.title }}</h1>
+      <p class="preview-subtext">{{ page.date }}</p>
+    </div>
+    <div class="preview-description">
+      <p>{{ page.description }}</p>
+    </div>
+    </a>
+  </div>
+{% endfor %}
+</div>
+<style>
+  .center {
+    margin: 0 auto;
+    display: block;
+  }
+  .blog-preview {
+    margin-bottom: 5em;
+    border-bottom: 1px solid #455052;
+  }
+  .preview-subtext {
+    font-size: .75em;
+  }
+  .preview-description {
+    font-size: .9em;
+    color: #455052;
+  }
+  .preview-title h1, .preview-title p {
+    margin: 0;
+  }
+</style>
+{% endblock content %}
+
+{% block hero %}{% endblock hero %}
+{% block toc %}{% endblock toc %}
+
+{% block footer %}
+<footer>
+    <small class="subtext">
+        <a href="https://lzahq.tech" target="_blank">by lza_menace</a> - 2021
+    </small>
+</footer>
+{% endblock footer %}
